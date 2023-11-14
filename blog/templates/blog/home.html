@@ -1,0 +1,22 @@
+{% extends 'blog/base.html' %}
+
+{% block title %} Home {% endblock %}
+
+{% block css-style %} 
+    <style>
+        ul{
+            list-style: none;
+            padding-left: 0;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+<h1>Posts</h1>
+<ul>
+{% for post in object_list %}
+    <li><a href="{% url 'blog:article' post.pk %}">{{ post.title }}</a> - {{ post.author.first_name }} {{ post.author.last_name }}<br>
+    {{ post.body }}</li> <hr>
+{% endfor %}
+</ul>
+{% endblock %}
